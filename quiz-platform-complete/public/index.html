@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102a43">
+<meta name="description" content="منصة الاختبارات الإلكترونية للمعهد العالي للعلوم والتقنية القره بوللي">
+<title>منصة الاختبارات | المعهد العالي للعلوم والتقنية القره بوللي</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" id="brandHome"><span class="brand-mark">م</span><span><b>منصة الاختبارات</b><small>المعهد العالي للعلوم والتقنية القره بوللي</small></span></a>
+  <nav id="nav" class="nav hidden">
+    <button class="nav-link" data-view="dashboard">الرئيسية</button>
+    <button class="nav-link" data-view="results">نتائجي</button>
+    <button class="nav-link hidden" id="adminNav" data-view="admin">الإدارة</button>
+    <button class="nav-link" id="logoutBtn">تسجيل الخروج</button>
+  </nav>
+</header>
+<main>
+  <section id="landing" class="hero view">
+    <div class="hero-copy">
+      <span class="eyebrow">التعلّم • التقييم • التطوّر</span>
+      <h1>اختبر معرفتك،<br><em>وطوّر مهاراتك.</em></h1>
+      <p>منصة إلكترونية للتدريب على الاختبارات ومتابعة النتائج في بيئة تعليمية واضحة وسهلة الاستخدام.</p>
+      <div class="hero-actions"><button class="btn primary" id="showLogin">تسجيل الدخول</button><button class="btn secondary" id="showRegister">إنشاء حساب طالب</button></div>
+      <div class="hero-note"><span class="dot"></span> واجهة عربية متوافقة مع الهاتف والكمبيوتر</div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="hero-sheet"><div class="sheet-top"><span></span><span></span><span></span></div><div class="sheet-icon">✓</div><div class="sheet-line long"></div><div class="sheet-line"></div><div class="sheet-answer checked">✓ <span></span></div><div class="sheet-answer">○ <span></span></div><div class="sheet-answer">○ <span></span></div><div class="sheet-score"><b>100%</b><small>تقدّمك يبدأ من هنا</small></div></div></div>
+  </section>
+  <section id="auth" class="view auth-wrap hidden">
+    <div class="auth-card"><button class="back-link" id="backLanding">← العودة</button><span class="eyebrow">مرحبًا بك</span><h2 id="authTitle">تسجيل الدخول</h2><p class="muted" id="authSub">أدخل بياناتك لمتابعة الاختبارات.</p>
+      <form id="authForm">
+        <div class="field hidden" id="fullNameField"><label for="fullName">الاسم الكامل</label><input id="fullName" autocomplete="name" maxlength="100" placeholder="اكتب اسمك الكامل"></div>
+        <div class="field"><label for="username">اسم المستخدم</label><input id="username" autocomplete="username" minlength="3" maxlength="30" required placeholder="مثال: student01"></div>
+        <div class="field"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" minlength="10" required placeholder="10 أحرف على الأقل"></div>
+        <button class="btn primary full" id="authSubmit">دخول</button><p class="message" id="authMessage" role="status"></p>
+      </form>
+      <p class="auth-switch" id="authSwitch">ليس لديك حساب؟ <button id="switchRegister">إنشاء حساب جديد</button></p>
+    </div>
+  </section>
+  <section id="dashboard" class="view hidden">
+    <div class="page-head"><div><span class="eyebrow">مساحة الطالب</span><h1>مرحبًا، <span id="welcomeName">طالبنا</span></h1><p class="muted">اختر مادة وابدأ اختبارًا تدريبيًا.</p></div><div class="head-chip">● حسابك نشط</div></div>
+    <div class="stats-row"><div class="stat-card"><span>عدد المواد</span><b id="subjectCount">—</b></div><div class="stat-card"><span>اختباراتي</span><b id="attemptCount">—</b></div><div class="stat-card"><span>متوسط النتائج</span><b id="averageScore">—</b></div></div>
+    <div class="section-head"><div><h2>المواد المتاحة</h2><p class="muted">الأسئلة والوقت يحددهما إعداد المادة.</p></div></div>
+    <div id="subjectGrid" class="subject-grid"><div class="loading">جارٍ تحميل المواد...</div></div>
+  </section>
+  <section id="exam" class="view hidden">
+    <div class="exam-top"><button class="back-link" id="exitExam">← إنهاء والعودة</button><div class="timer" id="timer">30:00</div></div>
+    <div class="exam-title"><span class="eyebrow">اختبار تدريبي</span><h1 id="examSubject">المادة</h1><p class="muted" id="questionCounter">السؤال 1</p><div class="progress"><span id="progressBar"></span></div></div>
+    <div id="questionBox" class="question-card"></div>
+    <div class="exam-actions"><button class="btn secondary" id="prevQuestion">السابق</button><button class="btn primary" id="nextQuestion">التالي</button><button class="btn primary hidden" id="submitExam">تسليم الاختبار</button></div>
+    <p class="message" id="examMessage" role="status"></p>
+  </section>
+  <section id="results" class="view hidden">
+    <div class="page-head"><div><span class="eyebrow">سجل التقدم</span><h1>نتائجي</h1><p class="muted">نتائج الاختبارات المحفوظة في حسابك.</p></div></div>
+    <div id="resultsList" class="table-wrap"><div class="loading">جارٍ تحميل النتائج...</div></div>
+  </section>
+  <section id="admin" class="view hidden">
+    <div class="page-head"><div><span class="eyebrow">صلاحيات المدير</span><h1>لوحة إدارة المنصة</h1><p class="muted">إدارة الأسئلة ومراجعة حسابات المستخدمين.</p></div><span class="head-chip">مدير</span></div>
+    <div class="admin-tabs"><button class="tab active" data-admin-tab="questions">إدارة الأسئلة</button><button class="tab" data-admin-tab="users">المستخدمون</button></div>
+    <div id="adminQuestions" class="admin-panel">
+      <div class="admin-layout"><form id="questionForm" class="panel-card"><h2>إضافة سؤال</h2>
+        <div class="field"><label for="qSubject">المادة</label><select id="qSubject" required></select></div>
+        <div class="field"><label for="qPrompt">نص السؤال</label><textarea id="qPrompt" required minlength="5" maxlength="2000"></textarea></div>
+        <div class="field"><label>الخيارات</label><input id="opt0" required placeholder="الخيار أ"><input id="opt1" required placeholder="الخيار ب"><input id="opt2" required placeholder="الخيار ج"><input id="opt3" required placeholder="الخيار د"></div>
+        <div class="field"><label for="qCorrect">الإجابة الصحيحة</label><select id="qCorrect"><option value="0">الخيار أ</option><option value="1">الخيار ب</option><option value="2">الخيار ج</option><option value="3">الخيار د</option></select></div>
+        <div class="field"><label for="qExplanation">شرح الإجابة (اختياري)</label><textarea id="qExplanation" maxlength="2000"></textarea></div>
+        <button class="btn primary full">حفظ السؤال</button><p class="message" id="questionMessage" role="status"></p>
+      </form><div class="panel-card"><div class="section-head"><h2>الأسئلة</h2><select id="filterSubject" aria-label="تصفية حسب المادة"></select></div><div id="questionList"></div></div></div>
+    </div>
+    <div id="adminUsers" class="admin-panel hidden"><div class="panel-card"><h2>حسابات المستخدمين</h2><div id="usersList"></div></div></div>
+  </section>
+  <section id="scoreView" class="view hidden">
+    <div class="score-card"><div class="score-icon">✓</div><span class="eyebrow">اكتمل الاختبار</span><h1>نتيجتك</h1><div class="score-number" id="scorePercent">0%</div><p id="scoreDetail"></p><button class="btn primary" id="scoreHome">العودة إلى المواد</button></div>
+  </section>
+  <section id="about" class="about-section"><div><span class="eyebrow">عن المنصة</span><h2>التعلّم بصورة أوضح</h2><p>تهدف هذه المنصة إلى تنظيم الاختبارات التدريبية ومساعدة الطلاب على متابعة أدائهم. يمكن لإدارة المعهد إضافة الأسئلة ومراجعة النتائج وفق الصلاحيات الممنوحة.</p></div><div class="about-points"><div><b>01</b><span>اختبارات منظمة حسب المادة</span></div><div><b>02</b><span>نتائج محفوظة في حساب الطالب</span></div><div><b>03</b><span>إدارة مركزية للأسئلة والمستخدمين</span></div></div></section>
+</main>
+<footer><span>© <span id="year"></span> منصة الاختبارات — المعهد العالي للعلوم والتقنية القره بوللي</span><span>نسخة أولية قابلة للتطوير</span></footer>
+<div id="toast" class="toast" role="status"></div>
+<script src="/app.js" defer></script>
+</body>
+</html>
